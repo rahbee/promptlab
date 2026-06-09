@@ -113,12 +113,14 @@ async def test_experiment_async_execution():
             with patch.object(experiment, "_prepare_experiment_data") as mock_prepare:
                 mock_prepare.return_value = (
                     mock_instance,  # experiment_config
-                    [],            # eval_dataset
-                    "",            # system_prompt
-                    "",            # user_prompt
-                    [],            # prompt_template_variables
+                    [],  # eval_dataset
+                    "",  # system_prompt
+                    "",  # user_prompt
+                    [],  # prompt_template_variables
                 )
-                with patch.object(experiment, "_init_batch_eval_async") as mock_batch_eval:
+                with patch.object(
+                    experiment, "_init_batch_eval_async"
+                ) as mock_batch_eval:
                     mock_batch_eval.return_value = asyncio.Future()
                     mock_batch_eval.return_value.set_result([{"experiment_id": "test"}])
 

@@ -23,11 +23,11 @@ class MockModel(Model):
         """Async invocation that simulates a delay"""
         await asyncio.sleep(self.delay_seconds)  # Simulate network delay
         return ModelResponse(
-                response=f"Async response to: {user_prompt}",
-                prompt_tokens=10,
-                completion_tokens=20,
-                latency_ms=self.latency_ms,
-            )
+            response=f"Async response to: {user_prompt}",
+            prompt_tokens=10,
+            completion_tokens=20,
+            latency_ms=self.latency_ms,
+        )
 
     def invoke(self, system_prompt, user_prompt) -> ModelResponse:
         """Synchronous invocation"""
